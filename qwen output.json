@@ -1,0 +1,577 @@
+{
+  "TechnicalQuestions": {
+    "python": [
+      {
+        "question": "What does the 'global' keyword do in Python?",
+        "options": {
+          "A": "Declares a variable inside a function as global",
+          "B": "Makes a variable accessible to all scopes",
+          "C": "Creates a new global variable in the current scope",
+          "D": "Prevents a variable from being modified"
+        },
+        "answer": "A",
+        "explanation": "The 'global' keyword declares that a variable inside a function refers to the global scope. Without it, variables assigned in a function are treated as local by default."
+      },
+      {
+        "question": "Which of these is a valid list comprehension syntax?",
+        "options": {
+          "A": "[x**2 for x in range(5)]",
+          "B": "(x**2 for x in range(5))",
+          "C": "{x**2 for x in range(5)}",
+          "D": "<x**2 for x in range(5)>"
+        },
+        "answer": "A",
+        "explanation": "Square brackets create lists, parentheses create generator expressions, curly braces create sets, and angle brackets are not valid syntax for comprehensions."
+      },
+      {
+        "question": "What is the purpose of try...except blocks in Python?",
+        "options": {
+          "A": "To handle runtime errors gracefully",
+          "B": "To execute code multiple times",
+          "C": "To define functions with parameters",
+          "D": "To manage memory allocation"
+        },
+        "answer": "A",
+        "explanation": "try...except blocks catch exceptions (errors) during execution, allowing the program to handle errors without crashing."
+      },
+      {
+        "question": "What does the '@' symbol represent in Python decorators?",
+        "options": {
+          "A": "String concatenation operator",
+          "B": "Bitwise XOR operation",
+          "C": "Function decoration syntax",
+          "D": "Set union operator"
+        },
+        "answer": "C",
+        "explanation": "The '@' symbol is used to apply decorators, which modify or extend function behavior without changing its source code."
+      },
+      {
+        "question": "Which statement correctly creates a generator in Python?",
+        "options": {
+          "A": "def gen(): yield 1",
+          "B": "lambda x: x**2",
+          "C": "tuple(range(5))",
+          "D": "list(map(str, [1,2,3]))"
+        },
+        "answer": "A",
+        "explanation": "Generators are created using functions with 'yield' statements. Lambdas, tuples, and lists create different types of objects."
+      },
+      {
+        "question": "Which string formatting method is most commonly used in modern Python?",
+        "options": {
+          "A": "% operator",
+          "B": ".format() method",
+          "C": "f-strings (formatted strings)",
+          "D": "str.join() method"
+        },
+        "answer": "C",
+        "explanation": "F-strings (introduced in Python 3.6) are preferred for their readability and performance, though .format() and % are still valid."
+      },
+      {
+        "question": "How do you import a module from a subdirectory in Python?",
+        "options": {
+          "A": "import subdirectory.module",
+          "B": "from subdirectory import module",
+          "C": "import sys; sys.path.append('subdirectory')",
+          "D": "All of the above"
+        },
+        "answer": "D",
+        "explanation": "All options are valid: direct imports, relative imports (for packages), and modifying sys.path for custom directories."
+      },
+      {
+        "question": "What does the 'with' statement do in Python?",
+        "options": {
+          "A": "Executes code in a block without indentation",
+          "B": "Manages context and resource cleanup automatically",
+          "C": "Defines a new scope for variables",
+          "D": "Imports modules from standard libraries"
+        },
+        "answer": "B",
+        "explanation": "'with' ensures proper setup and teardown of resources (like files) using context managers, even if exceptions occur."
+      },
+      {
+        "question": "What is the base class for all metaclasses in Python?",
+        "options": {
+          "A": "object",
+          "B": "type",
+          "C": "Meta",
+          "D": "class"
+        },
+        "answer": "B",
+        "explanation": "'type' is the built-in metaclass that creates classes. Custom metaclasses typically inherit from 'type' to modify class creation behavior."
+      },
+      {
+        "question": "Which module is used for asynchronous I/O in Python?",
+        "options": {
+          "A": "threading",
+          "B": "multiprocessing",
+          "C": "asyncio",
+          "D": "concurrent.futures"
+        },
+        "answer": "C",
+        "explanation": "'asyncio' provides infrastructure for writing single-threaded concurrent code using coroutines, which is essential for asynchronous programming."
+      }
+    ],
+    "js": [
+      {
+        "question": "What is the correct way to declare a variable that cannot be redeclared or reassigned in ES6?",
+        "options": {
+          "A": "var x = 10;",
+          "B": "let y = 20;",
+          "C": "const z = 30;",
+          "D": "var w = 40;"
+        },
+        "answer": "C",
+        "explanation": "The const keyword declares a constant variable that cannot be redeclared or reassigned. Let is also block-scoped but allows reassignment, while var is function-scoped and allows both redeclaration and reassignment."
+      },
+      {
+        "question": "Which of the following correctly describes JavaScript's 'this' keyword in a global scope?",
+        "options": {
+          "A": "Refers to the global object (window in browsers)",
+          "B": "Refers to the function's parent scope",
+          "C": "Is undefined in strict mode",
+          "D": "Always refers to an object instance"
+        },
+        "answer": "A",
+        "explanation": "'this' in global scope points to the global object (window in browsers). In strict mode, it would be undefined. It does not inherently refer to parent scopes or instances unless explicitly bound."
+      },
+      {
+        "question": "What is the primary purpose of Promises in JavaScript?",
+        "options": {
+          "A": "To enable multithreading",
+          "B": "To handle asynchronous operations with better error handling",
+          "C": "To replace callbacks entirely",
+          "D": "To manage memory allocation"
+        },
+        "answer": "B",
+        "explanation": "Promises provide a cleaner way to handle asynchronous operations compared to callbacks, allowing chaining and explicit error handling through .catch() or try/catch with async/await."
+      },
+      {
+        "question": "Which method is used to convert a JSON string into a JavaScript object?",
+        "options": {
+          "A": "JSON.stringify()",
+          "B": "JSON.parse()",
+          "C": "Object.fromEntries()",
+          "D": "Object.keys()"
+        },
+        "answer": "B",
+        "explanation": "JSON.parse() converts a JSON string into an object. JSON.stringify() does the reverse, converting objects to strings. The other methods are unrelated to JSON parsing."
+      },
+      {
+        "question": "What is the correct syntax for defining a class in ES6?",
+        "options": {
+          "A": "function MyClass() { }",
+          "B": "class MyClass { constructor() { } }",
+          "C": "var MyClass = function() { }",
+          "D": "defineClass(MyClass) { }"
+        },
+        "answer": "B",
+        "explanation": "ES6 introduces the class syntax with 'class' keyword and a constructor method. The other options are either older function-based syntax or non-standard."
+      },
+      {
+        "question": "Which of the following correctly describes the event loop in JavaScript?",
+        "options": {
+          "A": "It runs synchronously after all code execution",
+          "B": "It processes tasks in FIFO order from the call stack",
+          "C": "It handles asynchronous callbacks by adding them to the microtask queue",
+          "D": "It is responsible for garbage collection"
+        },
+        "answer": "C",
+        "explanation": "The event loop manages asynchronous operations by processing callbacks from task and microtask queues. It does not run synchronously and is separate from garbage collection mechanisms."
+      },
+      {
+        "question": "What is the result of executing 'console.log(1 + 2 + '3')' in JavaScript?",
+        "options": {
+          "A": "123",
+          "B": "12'3'",
+          "C": "Error: Cannot add number and string",
+          "D": "33"
+        },
+        "answer": "A",
+        "explanation": "JavaScript performs type coercion. The expression is evaluated as (1+2) = 3, then concatenated with '3', resulting in the string '123'."
+      },
+      {
+        "question": "Which operator is used to check if two values are strictly equal (same value and type)?",
+        "options": {
+          "A": "==",
+          "B": "!=",
+          "C": "===",
+          "D": "!=="
+        },
+        "answer": "C",
+        "explanation": "'===' performs strict equality comparison, checking both value and type. '==' does type coercion before comparing."
+      },
+      {
+        "question": "What is the purpose of the spread operator (...) in JavaScript?",
+        "options": {
+          "A": "To concatenate strings",
+          "B": "To create copies of arrays or objects",
+          "C": "To define default parameters",
+          "D": "To handle exceptions"
+        },
+        "answer": "B",
+        "explanation": "The spread operator allows expanding iterable objects into individual elements, useful for copying arrays/objects or passing multiple arguments to functions."
+      },
+      {
+        "question": "Which of the following is a common cause of memory leaks in JavaScript?",
+        "options": {
+          "A": "Using too many console.log statements",
+          "B": "Not removing event listeners when components unmount",
+          "C": "Excessive use of var instead of let/const",
+          "D": "Frequent use of setTimeout"
+        },
+        "answer": "B",
+        "explanation": "Memory leaks often occur when references to objects are not properly cleaned up, such as event listeners that remain attached after elements are removed from the DOM."
+      }
+    ],
+    "ts": [
+      {
+        "question": "What is the primary purpose of TypeScript?",
+        "options": {
+          "A": "To add static typing to JavaScript",
+          "B": "To enable dynamic runtime execution",
+          "C": "To replace JavaScript entirely",
+          "D": "To optimize JavaScript performance"
+        },
+        "answer": "A",
+        "explanation": "TypeScript is a statically typed superset of JavaScript that adds type annotations and interfaces to improve code reliability and maintainability. Options B, C, and D misrepresent its core functionality."
+      },
+      {
+        "question": "Which operator is used to define a union type in TypeScript?",
+        "options": {
+          "A": "|",
+          "B": "&",
+          "C": "*",
+          "D": "?"
+        },
+        "answer": "A",
+        "explanation": "The | (pipe) operator creates a union type, allowing a variable to hold values of multiple types. & is used for intersections, ? denotes optional properties, and * has no special meaning in this context."
+      },
+      {
+        "question": "What is the difference between an interface and a type alias in TypeScript?",
+        "options": {
+          "A": "Interfaces can only be used for object shapes",
+          "B": "Type aliases cannot extend other types",
+          "C": "Interfaces support declaration merging, while type aliases do not",
+          "D": "Type aliases are faster to execute than interfaces"
+        },
+        "answer": "C",
+        "explanation": "Interfaces support declaration merging (e.g., combining multiple interface definitions), whereas type aliases cannot. Both can define object shapes, and performance differences are negligible."
+      },
+      {
+        "question": "Which keyword is used to declare a variable with a type that can be any value?",
+        "options": {
+          "A": "any",
+          "B": "unknown",
+          "C": "void",
+          "D": "never"
+        },
+        "answer": "A",
+        "explanation": "'any' allows assignment of any type, bypassing type checks. 'unknown' requires explicit type guards, 'void' represents function return types with no value, and 'never' indicates values that never occur."
+      },
+      {
+        "question": "What does the 'strictNullChecks' compiler option do in TypeScript?",
+        "options": {
+          "A": "Enforces null checks at runtime",
+          "B": "Prevents assignments between different types",
+          "C": "Requires explicit null/undefined handling for all variables",
+          "D": "Disables type inference"
+        },
+        "answer": "C",
+        "explanation": "Strict null checks require developers to explicitly handle null and undefined values, preventing accidental null dereferences. It does not disable type inference or prevent type assignments."
+      },
+      {
+        "question": "How do you create a generic function in TypeScript?",
+        "options": {
+          "A": "Using the 'new' keyword",
+          "B": "Using angle brackets <> with type parameters",
+          "C": "Using the 'typeof' operator",
+          "D": "Using the 'instanceof' operator"
+        },
+        "answer": "B",
+        "explanation": "Generics are defined using angle brackets with type parameters (e.g., function identity<T>(value: T): T {}). The other options relate to object instantiation, type queries, and runtime checks respectively."
+      },
+      {
+        "question": "Which feature allows TypeScript to infer types from context?",
+        "options": {
+          "A": "Type annotations",
+          "B": "Type inference",
+          "C": "Union types",
+          "D": "Intersection types"
+        },
+        "answer": "B",
+        "explanation": "Type inference automatically deduces the type of a variable based on its initial value or context. Annotations explicitly declare types, while union and intersection types combine multiple types."
+      },
+      {
+        "question": "What is the purpose of the 'as' keyword in TypeScript?",
+        "options": {
+          "A": "To cast a value to a specific type",
+          "B": "To enforce strict null checks",
+          "C": "To define a type alias",
+          "D": "To create a union type"
+        },
+        "answer": "A",
+        "explanation": "'as' is used for type casting (e.g., const x = 'hello' as string), which tells TypeScript to treat a value as a specific type. It does not enforce null checks, define aliases, or create unions."
+      },
+      {
+        "question": "Which of the following is a valid way to define an enum in TypeScript?",
+        "options": {
+          "A": "enum Colors { Red, Green, Blue }",
+          "B": "const Colors = { Red: 0, Green: 1, Blue: 2 };",
+          "C": "type Colors = 'Red' | 'Green' | 'Blue';",
+          "D": "var Colors = ['Red', 'Green', 'Blue'];"
+        },
+        "answer": "A",
+        "explanation": "Enums are defined using the enum keyword with named constants. Option B creates an object, C defines a union type, and D is a simple array, none of which are enums."
+      },
+      {
+        "question": "What does the 'non-null assertion operator' (!) do in TypeScript?",
+        "options": {
+          "A": "Guarantees a value is not null or undefined at compile time",
+          "B": "Prevents runtime null checks",
+          "C": "Marks a variable as read-only",
+          "D": "Enables type widening"
+        },
+        "answer": "A",
+        "explanation": "The ! operator asserts that a value is non-null, allowing compilation despite potential runtime issues. It does not affect runtime checks, modify mutability, or alter type widening behavior."
+      }
+    ],
+    "react": [
+      {
+        "question": "Which of the following is true about React functional components?",
+        "options": {
+          "A": "They cannot have state",
+          "B": "They are always preferred over class components",
+          "C": "They can't have lifecycle methods",
+          "D": "They can have state using hooks"
+        },
+        "answer": "D",
+        "explanation": "Functional components can manage state using hooks like useState. While class components were traditionally used for state, functional components with hooks are now the preferred approach in modern React development."
+      },
+      {
+        "question": "What does JSX get compiled into by Babel?",
+        "options": {
+          "A": "HTML strings",
+          "B": "JavaScript objects",
+          "C": "React.createElement calls",
+          "D": "XML tags"
+        },
+        "answer": "C",
+        "explanation": "JSX is transpiled into React.createElement function calls, which are then used to build the virtual DOM. This allows developers to write HTML-like syntax while working with JavaScript."
+      },
+      {
+        "question": "Which hook is used to manage state in functional components?",
+        "options": {
+          "A": "useEffect",
+          "B": "useState",
+          "C": "useContext",
+          "D": "useReducer"
+        },
+        "answer": "B",
+        "explanation": "The useState hook is specifically designed for managing state in functional components. useEffect handles side effects, useContext is for accessing context, and useReducer is for more complex state logic."
+      },
+      {
+        "question": "What is the purpose of the useEffect dependency array?",
+        "options": {
+          "A": "To control when the effect runs",
+          "B": "To store component data",
+          "C": "To trigger re-renders",
+          "D": "To manage state"
+        },
+        "answer": "A",
+        "explanation": "The dependency array in useEffect determines when the effect should run. If dependencies change, the effect is executed again. Omitting it causes the effect to run on every render."
+      },
+      {
+        "question": "Which React feature allows passing data through the component tree without prop drilling?",
+        "options": {
+          "A": "Context API",
+          "B": "Redux",
+          "C": "Statelifting",
+          "D": "Reducer"
+        },
+        "answer": "A",
+        "explanation": "The Context API provides a way to pass data through the component hierarchy without having to manually pass props down at every level. Redux is an external state management library, not part of React core."
+      },
+      {
+        "question": "What is the primary purpose of the key prop in React lists?",
+        "options": {
+          "A": "To improve rendering performance",
+          "B": "To uniquely identify list items",
+          "C": "To enable sorting",
+          "D": "To manage accessibility"
+        },
+        "answer": "B",
+        "explanation": "The key prop helps React efficiently update and render lists by identifying which items have changed, been added, or removed. It should be a unique identifier for each list element."
+      },
+      {
+        "question": "Which of the following is NOT a valid use case for error boundaries?",
+        "options": {
+          "A": "Catching JavaScript errors in components",
+          "B": "Handling rendering errors in the DOM",
+          "C": "Preventing application crashes",
+          "D": "Logging unhandled rejections"
+        },
+        "answer": "B",
+        "explanation": "Error boundaries can catch JavaScript errors during rendering, lifecycle methods, and constructor functions. They cannot handle rendering errors in the DOM itself, which are outside React's control."
+      },
+      {
+        "question": "What is React's reconciliation process primarily responsible for?",
+        "options": {
+          "A": "Updating the DOM efficiently",
+          "B": "Managing component state",
+          "C": "Handling user events",
+          "D": "Parsing JSX"
+        },
+        "answer": "A",
+        "explanation": "Reconciliation is the process React uses to compare the virtual DOM with the actual DOM and make minimal, efficient updates. It ensures changes are applied optimally without full re-renders."
+      },
+      {
+        "question": "Which hook should be used to memoize expensive computations in a functional component?",
+        "options": {
+          "A": "useMemo",
+          "B": "useCallback",
+          "C": "useState",
+          "D": "useEffect"
+        },
+        "answer": "A",
+        "explanation": "The useMemo hook is designed to memoize the results of a computation so it only runs when dependencies change. useCallback is for memoizing functions, while useState and useEffect handle state and side effects respectively."
+      },
+      {
+        "question": "Which lifecycle method in class components is most similar to useEffect with an empty dependency array?",
+        "options": {
+          "A": "componentDidMount",
+          "B": "componentWillUnmount",
+          "C": "shouldComponentUpdate",
+          "D": "componentDidUpdate"
+        },
+        "answer": "A",
+        "explanation": "useEffect with an empty dependency array runs once after the initial render, similar to componentDidMount. componentWillUnmount is for cleanup in useEffect, while shouldComponentUpdate and componentDidUpdate handle different lifecycle phases."
+      }
+    ],
+    "r": [
+      {
+        "question": "Which of these is a fundamental data structure in R?",
+        "options": {
+          "A": "Vector",
+          "B": "List",
+          "C": "Matrix",
+          "D": "All of the above"
+        },
+        "answer": "D",
+        "explanation": "R has four core data structures: vectors, lists, matrices, and data frames. All options are correct as they represent fundamental types."
+      },
+      {
+        "question": "How do you install a package in R?",
+        "options": {
+          "A": "library(package_name)",
+          "B": "require(package_name)",
+          "C": "install.packages(\"package_name\")",
+          "D": "source(\"package.R\")"
+        },
+        "answer": "C",
+        "ex\n      },\n      {\n        \"question": "What does the apply family of functions do in R?"
+      },
+      {
+        "options": {
+          "A": "Perform statistical analysis on datasets",
+          "B": "Apply a function to margins of an array",
+          "C": "Generate random numbers",
+          "D": "Create visualizations"
+        },
+        "answer": "B",
+        "explanation": "The apply family (e.g., lapply, sapply) applies a function across dimensions of arrays/matrices. They are used for operations like row/column calculations."
+      },
+      {
+        "question": "Which dplyr function is used to filter rows based on conditions?",
+        "options": {
+          "A": "select()",
+          "B": "filter()",
+          "C": "mutate()",
+          "D": "summarize()"
+        },
+        "answer": "B",
+        "explanation": "The filter() function in dplyr is designed to subset rows based on logical conditions, while select() handles column selection."
+      },
+      {
+        "question": "What is the correct syntax for adding a scatter plot layer in ggplot2?",
+        "options": {
+          "A": "geom_boxplot()",
+          "B": "geom_point()",
+          "C": "geom_line()",
+          "D": "geom_histogram()"
+        },
+        "answer": "B",
+        "explanation": "geom_point() creates scatter plots, while the other options are for boxplots, line charts, and histograms respectively."
+      },
+      {
+        "question": "How do you handle missing values (NA) in R?",
+        "options": {
+          "A": "Use the na.omit() function",
+          "B": "Replace with 0 using replace_na()",
+          "C": "Check with is.na()",
+          "D": "All of the above"
+        },
+        "answer": "D",
+        "explanation": "All options are valid: na.omit() removes NAs, replace_na() (from tidyr) fills them, and is.na() detects them."
+      },
+      {
+        "question": "What distinguishes a tibble from a data frame in R?",
+        "options": {
+          "A": "Tibbles cannot have factors",
+          "B": "Tibbles print with full rows by default",
+          "C": "Tibbles are stored as matrices",
+          "D": "Tibbles do not support subsetting"
+        },
+        "answer": "B",
+        "explanation": "Tibbles (from tidyverse) print only the first 10 rows, while data frames show all rows by default. Other options are incorrect."
+      },
+      {
+        "question": "Which approach is more efficient in R for large datasets?",
+        "options": {
+          "A": "Using for loops",
+          "B": "Vectorized operations",
+          "C": "Base R functions",
+          "D": "All are equally efficient"
+        },
+        "answer": "B",
+        "explanation": "Vectorized operations (e.g., +, * on vectors) are faster than loops due to optimized C implementations in R."
+      },
+      {
+        "question": "What does lapply() return when applied to a list of numeric vectors?",
+        "options": {
+          "A": "A vector",
+          "B": "A list",
+          "C": "A matrix",
+          "D": "An array"
+        },
+        "answer": "B",
+        "explanation": "lapply() always returns a list, while sapply() may simplify to a vector or matrix depending on the input."
+      },
+      {
+        "question": "Which package is NOT part of the tidyverse suite?",
+        "options": {
+          "A": "dplyr",
+          "B": "ggplot2",
+          "C": "shiny",
+          "D": "tidyr"
+        },
+        "answer": "C",
+        "explanation": "Shiny is a separate package for building web apps, while dplyr, ggplot2, and tidyr are core tidyverse packages."
+      }
+    ]
+  },
+  "MetaData": {
+    "totalSubjects": 5,
+    "questionsPerSubject": 10,
+    "generatedOn": "2025-06-12 16:03:58",
+    "timezone": "IST (Indian Standard Time)",
+    "successfulSubjects": [
+      "python",
+      "js",
+      "ts",
+      "react",
+      "r"
+    ],
+    "failedSubjects": []
+  }
+}

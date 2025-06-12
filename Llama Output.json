@@ -1,0 +1,578 @@
+{
+  "TechnicalQuestions": {
+    "python": [
+      {
+        "question": "What is the difference between 'pass' and 'None' in Python?",
+        "options": {
+          "A": "Pass is used to indicate the end of a function, while None is used to indicate the absence of a value.",
+          "B": "Pass is used to indicate the absence of a value, while None is used to indicate the end of a function.",
+          "C": "Pass and None are both used to indicate the end of a function.",
+          "D": "Pass and None are both used to indicate the absence of a value."
+        },
+        "answer": "A",
+        "explanation": "Pass is used to indicate the end of a function, while None is used to indicate the absence of a value. Pass is a placeholder when a statement is required but no execution of code is necessary, whereas None is a special value that represents the absence of a value."
+      },
+      {
+        "question": "What is the purpose of the 'with' statement in Python?",
+        "options": {
+          "A": "To create a new scope for variables.",
+          "B": "To handle exceptions in a function.",
+          "C": "To open and close files automatically.",
+          "D": "To create a new thread in a program."
+        },
+        "answer": "C",
+        "explanation": "The 'with' statement is used to open and close files automatically, ensuring that resources are properly cleaned up after use. It also supports the use of context managers to handle exceptions and other cleanup tasks."
+      },
+      {
+        "question": "What is the difference between 'list' and 'tuple' in Python?",
+        "options": {
+          "A": "List is mutable, while tuple is immutable.",
+          "B": "List is immutable, while tuple is mutable.",
+          "C": "List and tuple are both mutable.",
+          "D": "List and tuple are both immutable."
+        },
+        "answer": "A",
+        "explanation": "List is a mutable collection that can be modified after creation, while tuple is an immutable collection that cannot be modified after creation. Lists are defined using square brackets '[]', while tuples are defined using parentheses '()'."
+      },
+      {
+        "question": "What is the purpose of the 'lambda' function in Python?",
+        "options": {
+          "A": "To create a new class in a program.",
+          "B": "To create a new function in a program.",
+          "C": "To create a small, anonymous function that can be used immediately.",
+          "D": "To create a new module in a program."
+        },
+        "answer": "C",
+        "explanation": "The 'lambda' function is used to create a small, anonymous function that can be used immediately. It is often used in combination with higher-order functions, such as 'map', 'filter', and 'reduce'."
+      },
+      {
+        "question": "What is the difference between '==', 'is', and '==' in Python?",
+        "options": {
+          "A": "== is used for equality, is is used for identity, and == is used for both equality and identity.",
+          "B": "== is used for equality, is is used for identity, and == is used for identity.",
+          "C": "== is used for identity, is is used for equality, and == is used for both equality and identity.",
+          "D": "== is used for both equality and identity, is is used for equality, and == is used for identity."
+        },
+        "answer": "B",
+        "explanation": "== is used for equality, is is used for identity. Equality checks the value of two objects, while identity checks whether two variables point to the same object in memory."
+      },
+      {
+        "question": "What is the purpose of the 'zip' function in Python?",
+        "options": {
+          "A": "To create a new list in a program.",
+          "B": "To create a new dictionary in a program.",
+          "C": "To iterate over two or more lists in parallel.",
+          "D": "To create a new tuple in a program."
+        },
+        "answer": "C",
+        "explanation": "The 'zip' function is used to iterate over two or more lists in parallel. It returns an iterator that produces tuples, where the first item in each tuple comes from the first list, the second item comes from the second list, and so on."
+      },
+      {
+        "question": "What is the difference between 'map', 'filter', and 'reduce' in Python?",
+        "options": {
+          "A": "Map applies a function to each item in an iterable, filter removes items from an iterable based on a condition, and reduce applies a function to each item in an iterable and reduces it to a single value.",
+          "B": "Map applies a function to each item in an iterable, filter applies a function to each item in an iterable and removes items based on a condition, and reduce applies a function to each item in an iterable and reduces it to a single value.",
+          "C": "Map removes items from an iterable based on a condition, filter applies a function to each item in an iterable, and reduce applies a function to each item in an iterable and reduces it to a single value.",
+          "D": "Map applies a function to each item in an iterable and reduces it to a single value, filter removes items from an iterable based on a condition, and reduce applies a function to each item in an iterable."
+        },
+        "answer": "A",
+        "explanation": "Map applies a function to each item in an iterable, filter removes items from an iterable based on a condition, and reduce applies a function to each item in an iterable and reduces it to a single value. Map, filter, and reduce are all higher-order functions that operate on iterables."
+      },
+      {
+        "question": "What is the purpose of the 'enumerate' function in Python?",
+        "options": {
+          "A": "To create a new list in a program.",
+          "B": "To iterate over a list and keep track of the index and value of each item.",
+          "C": "To create a new dictionary in a program.",
+          "D": "To create a new tuple in a program."
+        },
+        "answer": "B",
+        "explanation": "The 'enumerate' function is used to iterate over a list and keep track of the index and value of each item. It returns an iterator that produces tuples, where the first item in each tuple is the index and the second item is the value."
+      },
+      {
+        "question": "What is the difference between 'sorted' and 'list.sort' in Python?",
+        "options": {
+          "A": "Sorted returns a new sorted list, while list.sort sorts the list in-place.",
+          "B": "Sorted sorts the list in-place, while list.sort returns a new sorted list.",
+          "C": "Sorted returns a new sorted list, while list.sort returns a new sorted list.",
+          "D": "Sorted sorts the list in-place, while list.sort sorts the list in-place."
+        },
+        "answer": "A",
+        "explanation": "Sorted returns a new sorted list, while list.sort sorts the list in-place. list.sort is a method that modifies the original list, while sorted is a function that returns a new sorted list."
+      },
+      {
+        "question": "What is the purpose of the 'contextlib.contextmanager' decorator in Python?",
+        "options": {
+          "A": "To create a new class in a program.",
+          "B": "To create a new function in a program.",
+          "C": "To create a context manager that can be used with the 'with' statement.",
+          "D": "To create a new module in a program."
+        },
+        "answer": "C",
+        "explanation": "The 'contextlib.contextmanager' decorator is used to create a context manager that can be used with the 'with' statement. It allows you to define a context manager as a generator function, which can be used to manage resources such as files, locks, and connections."
+      }
+    ],
+    "js": [
+      {
+        "question": "What is the primary difference between the 'let' and 'var' keywords in JavaScript?",
+        "options": {
+          "A": "Scope",
+          "B": "Hoisting",
+          "C": "Block-level scoping",
+          "D": "Function-level scoping"
+        },
+        "answer": "C",
+        "explanation": "The 'let' keyword introduces block-level scoping, whereas 'var' has function-level scoping. This means 'let' variables are only accessible within the block they are declared in, whereas 'var' variables are accessible throughout the function."
+      },
+      {
+        "question": "What is the purpose of the 'this' keyword in JavaScript?",
+        "options": {
+          "A": "To access global variables",
+          "B": "To access function arguments",
+          "C": "To access the current object or function",
+          "D": "To access the DOM"
+        },
+        "answer": "C",
+        "explanation": "The 'this' keyword is used to access the current object or function, depending on the context in which it is used. It is commonly used in object-oriented programming and event handling."
+      },
+      {
+        "question": "What is the difference between '=='' and '===' in JavaScript?",
+        "options": {
+          "A": "Type coercion",
+          "B": "Strict equality",
+          "C": "Loose equality",
+          "D": "Type checking"
+        },
+        "answer": "B",
+        "explanation": "The '===' operator checks for strict equality, meaning it checks both the value and the type of the operands. The '==' operator checks for loose equality, meaning it performs type coercion before comparing the values."
+      },
+      {
+        "question": "What is the purpose of the 'bind' method in JavaScript?",
+        "options": {
+          "A": "To create a new function",
+          "B": "To create a new object",
+          "C": "To set the 'this' keyword",
+          "D": "To set the 'call' method"
+        },
+        "answer": "C",
+        "explanation": "The 'bind' method is used to set the 'this' keyword of a function to a specific value, allowing the function to be called with a different context."
+      },
+      {
+        "question": "What is the difference between 'const' and 'let' in JavaScript?",
+        "options": {
+          "A": "Scope",
+          "B": "Immutability",
+          "C": "Block-level scoping",
+          "D": "Function-level scoping"
+        },
+        "answer": "B",
+        "explanation": "The 'const' keyword declares a constant variable, meaning its value cannot be changed after it is declared. The 'let' keyword declares a variable with block-level scoping, meaning its value can be changed within the block it is declared in."
+      },
+      {
+        "question": "What is the purpose of the 'map' method in JavaScript?",
+        "options": {
+          "A": "To create a new array",
+          "B": "To filter an array",
+          "C": "To transform an array",
+          "D": "To sort an array"
+        },
+        "answer": "C",
+        "explanation": "The 'map' method is used to transform an array by applying a function to each element, returning a new array with the transformed values."
+      },
+      {
+        "question": "What is the difference between 'async' and 'await' in JavaScript?",
+        "options": {
+          "A": "Async/await syntax",
+          "B": "Promise-based syntax",
+          "C": "Callback-based syntax",
+          "D": "Event-based syntax"
+        },
+        "answer": "A",
+        "explanation": "The 'async' keyword is used to declare an asynchronous function, allowing the use of the 'await' keyword to pause execution until a promise is resolved. The 'await' keyword is used to pause execution until a promise is resolved, allowing the function to continue executing once the promise is resolved."
+      },
+      {
+        "question": "What is the purpose of the 'reduce' method in JavaScript?",
+        "options": {
+          "A": "To create a new array",
+          "B": "To filter an array",
+          "C": "To transform an array",
+          "D": "To accumulate a value"
+        },
+        "answer": "D",
+        "explanation": "The 'reduce' method is used to accumulate a value by applying a function to each element in an array, returning a single value."
+      },
+      {
+        "question": "What is the difference between 'forEach' and 'map' in JavaScript?",
+        "options": {
+          "A": "Callback function",
+          "B": "Return value",
+          "C": "Array modification",
+          "D": "Array creation"
+        },
+        "answer": "B",
+        "explanation": "The 'forEach' method does not return a new array, whereas the 'map' method returns a new array with the transformed values. The 'forEach' method is used to iterate over an array, whereas the 'map' method is used to transform an array."
+      },
+      {
+        "question": "What is the purpose of the 'JSON.parse' method in JavaScript?",
+        "options": {
+          "A": "To create a new JSON object",
+          "B": "To parse a JSON string",
+          "C": "To stringify a JSON object",
+          "D": "To validate a JSON object"
+        },
+        "answer": "B",
+        "explanation": "The 'JSON.parse' method is used to parse a JSON string into a JavaScript object."
+      }
+    ],
+    "ts": [
+      {
+        "question": "What is the primary purpose of the `let` keyword in TypeScript?",
+        "options": {
+          "A": "To declare a constant variable",
+          "B": "To declare a block-scoped variable",
+          "C": "To declare a function",
+          "D": "To declare a class"
+        },
+        "answer": "B",
+        "explanation": "The `let` keyword is used to declare a block-scoped variable, which means its scope is limited to the block it is defined in. This is in contrast to `var`, which has function scope."
+      },
+      {
+        "question": "What is the difference between `==` and `===` in TypeScript?",
+        "options": {
+          "A": "One is for numbers and the other for strings",
+          "B": "One is for equality and the other for inequality",
+          "C": "One checks for loose equality and the other for strict equality",
+          "D": "One is for numbers and the other for booleans"
+        },
+        "answer": "C",
+        "explanation": "The `==` operator checks for loose equality, which means it converts both operands to the same type before comparing them. The `===` operator checks for strict equality, which means it compares the operands without converting them to the same type."
+      },
+      {
+        "question": "What is the purpose of the `interface` keyword in TypeScript?",
+        "options": {
+          "A": "To declare a class",
+          "B": "To declare a function",
+          "C": "To declare a type",
+          "D": "To declare a variable"
+        },
+        "answer": "C",
+        "explanation": "The `interface` keyword is used to declare a type, which is a contract that specifies a set of properties, methods, and indices that a value must conform to."
+      },
+      {
+        "question": "What is the difference between `null` and `undefined` in TypeScript?",
+        "options": {
+          "A": "One is a primitive type and the other is an object",
+          "B": "One is a value and the other is a type",
+          "C": "One represents the absence of any object value and the other represents an unknown value",
+          "D": "One is a function and the other is a variable"
+        },
+        "answer": "C",
+        "explanation": "The `null` type represents the absence of any object value, while the `undefined` type represents an unknown value. Both are primitive types, but they have different meanings and uses."
+      },
+      {
+        "question": "What is the purpose of the `type` keyword in TypeScript?",
+        "options": {
+          "A": "To declare a variable",
+          "B": "To declare a function",
+          "C": "To declare a type alias",
+          "D": "To declare a class"
+        },
+        "answer": "C",
+        "explanation": "The `type` keyword is used to declare a type alias, which is a shorthand for a complex type. Type aliases can be used to simplify type definitions and make code more readable."
+      },
+      {
+        "question": "What is the difference between `const` and `let` in TypeScript?",
+        "options": {
+          "A": "One is for variables and the other is for constants",
+          "B": "One is for block-scoped variables and the other is for function-scoped variables",
+          "C": "One is for mutable variables and the other is for immutable variables",
+          "D": "One is for numbers and the other is for strings"
+        },
+        "answer": "C",
+        "explanation": "The `const` keyword is used to declare an immutable variable, while the `let` keyword is used to declare a mutable variable. Both are block-scoped, but `const` variables cannot be reassigned."
+      },
+      {
+        "question": "What is the purpose of the `readonly` keyword in TypeScript?",
+        "options": {
+          "A": "To declare a constant variable",
+          "B": "To declare a block-scoped variable",
+          "C": "To declare a property that cannot be reassigned",
+          "D": "To declare a function"
+        },
+        "answer": "C",
+        "explanation": "The `readonly` keyword is used to declare a property that cannot be reassigned. This is useful for properties that should not be changed after initialization."
+      },
+      {
+        "question": "What is the difference between `any` and `unknown` in TypeScript?",
+        "options": {
+          "A": "One is a type and the other is a value",
+          "B": "One is a primitive type and the other is an object",
+          "C": "One represents a value that can be any type and the other represents a value that is unknown",
+          "D": "One is a function and the other is a variable"
+        },
+        "answer": "C",
+        "explanation": "The `any` type represents a value that can be any type, while the `unknown` type represents a value that is unknown. Both are used to indicate that a value may not conform to a specific type, but `unknown` is safer and more restrictive."
+      },
+      {
+        "question": "What is the purpose of the `never` type in TypeScript?",
+        "options": {
+          "A": "To declare a type that can never be instantiated",
+          "B": "To declare a type that can always be instantiated",
+          "C": "To declare a type that can be any type",
+          "D": "To declare a type that is unknown"
+        },
+        "answer": "A",
+        "explanation": "The `never` type is used to declare a type that can never be instantiated. This is useful for functions that always throw an error or never return a value."
+      },
+      {
+        "question": "What is the difference between `enum` and `const enum` in TypeScript?",
+        "options": {
+          "A": "One is for declaring constants and the other is for declaring variables",
+          "B": "One is for declaring functions and the other is for declaring classes",
+          "C": "One is for declaring a set of named values and the other is for declaring a set of constant values",
+          "D": "One is for declaring a type and the other is for declaring a value"
+        },
+        "answer": "C",
+        "explanation": "The `enum` keyword is used to declare a set of named values, while the `const enum` keyword is used to declare a set of constant values. Both are used to declare a set of values, but `const enum` values are always constant."
+      }
+    ],
+    "react": [
+      {
+        "question": "What is the primary purpose of the `key` prop in React?",
+        "options": {
+          "A": "To identify a unique component in the DOM",
+          "B": "To optimize the rendering of a component",
+          "C": "To specify the component's style",
+          "D": "To handle user input"
+        },
+        "answer": "A",
+        "explanation": "The `key` prop is used to identify a unique component in the DOM, which is essential for React's virtual DOM to keep track of changes and optimize rendering."
+      },
+      {
+        "question": "What is the difference between `map()` and `forEach()` in React?",
+        "options": {
+          "A": "`map()` returns an array, while `forEach()` returns a value",
+          "B": "`map()` is used for arrays, while `forEach()` is used for objects",
+          "C": "`map()` is used for rendering, while `forEach()` is used for side effects",
+          "D": "`map()` is used for objects, while `forEach()` is used for arrays"
+        },
+        "answer": "C",
+        "explanation": "`map()` is used for rendering and returns an array, while `forEach()` is used for side effects and does not return a value."
+      },
+      {
+        "question": "What is the purpose of the `useCallback()` hook in React?",
+        "options": {
+          "A": "To memoize a function",
+          "B": "To optimize the rendering of a component",
+          "C": "To handle user input",
+          "D": "To specify the component's style"
+        },
+        "answer": "A",
+        "explanation": "The `useCallback()` hook is used to memoize a function, which prevents it from being recreated on every render and optimizes performance."
+      },
+      {
+        "question": "What is the difference between `useState()` and `useReducer()` in React?",
+        "options": {
+          "A": "`useState()` is used for simple state, while `useReducer()` is used for complex state",
+          "B": "`useState()` is used for objects, while `useReducer()` is used for arrays",
+          "C": "`useState()` is used for rendering, while `useReducer()` is used for side effects",
+          "D": "`useState()` is used for arrays, while `useReducer()` is used for objects"
+        },
+        "answer": "A",
+        "explanation": "`useState()` is used for simple state, while `useReducer()` is used for complex state and is more suitable for managing multiple state variables."
+      },
+      {
+        "question": "What is the purpose of the `useContext()` hook in React?",
+        "options": {
+          "A": "To access a context value",
+          "B": "To create a context",
+          "C": "To handle user input",
+          "D": "To specify the component's style"
+        },
+        "answer": "A",
+        "explanation": "The `useContext()` hook is used to access a context value, which allows components to access shared state without passing props down manually."
+      },
+      {
+        "question": "What is the difference between `useEffect()` and `useLayoutEffect()` in React?",
+        "options": {
+          "A": "`useEffect()` is used for rendering, while `useLayoutEffect()` is used for side effects",
+          "B": "`useEffect()` is used for arrays, while `useLayoutEffect()` is used for objects",
+          "C": "`useEffect()` is used for simple state, while `useLayoutEffect()` is used for complex state",
+          "D": "`useEffect()` is used for objects, while `useLayoutEffect()` is used for arrays"
+        },
+        "answer": "A",
+        "explanation": "`useEffect()` is used for rendering and side effects, while `useLayoutEffect()` is used for layout effects and is called synchronously."
+      },
+      {
+        "question": "What is the purpose of the `useMemo()` hook in React?",
+        "options": {
+          "A": "To memoize a value",
+          "B": "To optimize the rendering of a component",
+          "C": "To handle user input",
+          "D": "To specify the component's style"
+        },
+        "answer": "A",
+        "explanation": "The `useMemo()` hook is used to memoize a value, which prevents it from being recalculated on every render and optimizes performance."
+      },
+      {
+        "question": "What is the difference between `useRef()` and `useImperativeHandle()` in React?",
+        "options": {
+          "A": "`useRef()` is used for imperative handling, while `useImperativeHandle()` is used for references",
+          "B": "`useRef()` is used for references, while `useImperativeHandle()` is used for imperative handling",
+          "C": "`useRef()` is used for simple state, while `useImperativeHandle()` is used for complex state",
+          "D": "`useRef()` is used for arrays, while `useImperativeHandle()` is used for objects"
+        },
+        "answer": "B",
+        "explanation": "`useRef()` is used for references, while `useImperativeHandle()` is used for imperative handling and allows components to expose imperative APIs."
+      },
+      {
+        "question": "What is the purpose of the `useCallback()` hook in React when used with `useMemo()`?",
+        "options": {
+          "A": "To memoize a function and its dependencies",
+          "B": "To optimize the rendering of a component",
+          "C": "To handle user input",
+          "D": "To specify the component's style"
+        },
+        "answer": "A",
+        "explanation": "When used together, `useCallback()` and `useMemo()` can memoize a function and its dependencies, which optimizes performance by preventing unnecessary recalculations."
+      },
+      {
+        "question": "What is the difference between `useContext()` and `useReducer()` in React?",
+        "options": {
+          "A": "`useContext()` is used for simple state, while `useReducer()` is used for complex state",
+          "B": "`useContext()` is used for objects, while `useReducer()` is used for arrays",
+          "C": "`useContext()` is used for rendering, while `useReducer()` is used for side effects",
+          "D": "`useContext()` is used for arrays, while `useReducer()` is used for objects"
+        },
+        "answer": "A",
+        "explanation": "`useContext()` is used for simple state, while `useReducer()` is used for complex state and is more suitable for managing multiple state variables."
+      }
+    ],
+    "r": [
+      {
+        "question": "What is the primary purpose of the `dplyr` package in R?",
+        "options": {
+          "A": "Data visualization",
+          "B": "Data manipulation and transformation",
+          "C": "Data modeling and machine learning",
+          "D": "Data import and export"
+        },
+        "answer": "B",
+        "explanation": "The `dplyr` package is designed for data manipulation and transformation, providing a grammar of data manipulation that allows users to easily perform common data analysis tasks."
+      },
+      {
+        "question": "What is the difference between `attach()` and `load()` in R?",
+        "options": {
+          "A": "Attach loads a library, while load loads a dataset",
+          "B": "Attach loads a dataset, while load loads a library",
+          "C": "Attach loads a library, while load loads a function",
+          "D": "Attach loads a function, while load loads a library"
+        },
+        "answer": "A",
+        "explanation": "The `attach()` function loads a dataset into the current environment, while the `load()` function loads a library into memory."
+      },
+      {
+        "question": "What is the purpose of the `set.seed()` function in R?",
+        "options": {
+          "A": "To generate random numbers",
+          "B": "To set the seed for random number generation",
+          "C": "To load a library",
+          "D": "To attach a dataset"
+        },
+        "answer": "B",
+        "explanation": "The `set.seed()` function sets the seed for random number generation, allowing users to reproduce results and ensure consistency in their analyses."
+      },
+      {
+        "question": "What is the difference between `lm()` and `glm()` in R?",
+        "options": {
+          "A": "lm() fits linear models, while glm() fits generalized linear models",
+          "B": "lm() fits generalized linear models, while glm() fits linear models",
+          "C": "lm() fits logistic regression models, while glm() fits linear regression models",
+          "D": "lm() fits logistic regression models, while glm() fits logistic regression models"
+        },
+        "answer": "A",
+        "explanation": "The `lm()` function fits linear models, while the `glm()` function fits generalized linear models, which include linear models as a special case."
+      },
+      {
+        "question": "What is the purpose of the `str()` function in R?",
+        "options": {
+          "A": "To print the structure of an object",
+          "B": "To print the summary of an object",
+          "C": "To print the help documentation for an object",
+          "D": "To load a library"
+        },
+        "answer": "A",
+        "explanation": "The `str()` function prints the structure of an object, providing information about its class, dimensions, and other attributes."
+      },
+      {
+        "question": "What is the difference between `subset()` and `filter()` in R?",
+        "options": {
+          "A": "subset() filters data, while filter() subsets data",
+          "B": "subset() subsets data, while filter() filters data",
+          "C": "subset() loads a library, while filter() loads a dataset",
+          "D": "subset() loads a dataset, while filter() loads a library"
+        },
+        "answer": "A",
+        "explanation": "The `subset()` function filters data, while the `filter()` function subsets data, although the terms are often used interchangeably."
+      },
+      {
+        "question": "What is the purpose of the `sapply()` function in R?",
+        "options": {
+          "A": "To apply a function to each element of a vector",
+          "B": "To apply a function to each element of a list",
+          "C": "To apply a function to each element of a matrix",
+          "D": "To apply a function to each element of a data frame"
+        },
+        "answer": "A",
+        "explanation": "The `sapply()` function applies a function to each element of a vector, returning a vector of results."
+      },
+      {
+        "question": "What is the difference between `merge()` and `join()` in R?",
+        "options": {
+          "A": "merge() joins data, while join() merges data",
+          "B": "merge() merges data, while join() joins data",
+          "C": "merge() loads a library, while join() loads a dataset",
+          "D": "merge() loads a dataset, while join() loads a library"
+        },
+        "answer": "A",
+        "explanation": "The `merge()` function joins data, while the `join()` function is a more modern and flexible alternative for joining data frames."
+      },
+      {
+        "question": "What is the purpose of the `tidyr::gather()` function in R?",
+        "options": {
+          "A": "To melt data",
+          "B": "To pivot data",
+          "C": "To reshape data",
+          "D": "To transform data"
+        },
+        "answer": "A",
+        "explanation": "The `tidyr::gather()` function melts data, converting it from a wide format to a long format."
+      },
+      {
+        "question": "What is the difference between `factor()` and `as.factor()` in R?",
+        "options": {
+          "A": "factor() creates a factor, while as.factor() converts to a factor",
+          "B": "factor() converts to a factor, while as.factor() creates a factor",
+          "C": "factor() loads a library, while as.factor() loads a dataset",
+          "D": "factor() loads a dataset, while as.factor() loads a library"
+        },
+        "answer": "A",
+        "explanation": "The `factor()` function creates a factor, while the `as.factor()` function converts an object to a factor."
+      }
+    ]
+  },
+  "MetaData": {
+    "totalSubjects": 5,
+    "questionsPerSubject": 10,
+    "generatedOn": "2025-06-12 15:55:54",
+    "timezone": "IST (Indian Standard Time)",
+    "successfulSubjects": [
+      "python",
+      "js",
+      "ts",
+      "react",
+      "r"
+    ],
+    "failedSubjects": []
+  }
+}
