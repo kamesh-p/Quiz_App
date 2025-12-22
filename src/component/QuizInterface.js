@@ -1,196 +1,102 @@
-import { useState } from "react";
-const quizData = {
-  javascript: [
-    {
-      question:
-        "What is the output of `console.log(typeof NaN)` in JavaScript?",
-      options: ["number", "string", "undefined", "NaN"],
-      correct: 0,
-      explanation:
-        "In JavaScript, NaN is considered a number type, despite standing for 'Not a Number'.",
-    },
-    {
-      question:
-        "Which method is used to add an element to the end of an array?",
-      options: [
-        "array.push()",
-        "array.pop()",
-        "array.shift()",
-        "array.unshift()",
-      ],
-      correct: 0,
-      explanation:
-        "The push() method adds one or more elements to the end of an array.",
-    },
-    {
-      question:
-        "What does the 'this' keyword refer to in a JavaScript object method?",
-      options: [
-        "The object itself",
-        "The window object",
-        "The parent object",
-        "It depends on the context",
-      ],
-      correct: 0,
-      explanation:
-        "In an object method, 'this' refers to the object that is calling the method.",
-    },
-  ],
-  python: [
-    {
-      question:
-        "What is the correct way to create a virtual environment in Python?",
-      options: [
-        "python -m venv myenv",
-        "python create virtualenv myenv",
-        "python setup-env myenv",
-        "python virtual myenv",
-      ],
-      correct: 0,
-      explanation:
-        "The standard way is using the venv module: `python -m venv myenv`",
-    },
-    {
-      question: "Which of these is NOT a built-in Python data structure?",
-      options: ["array", "list", "tuple", "dictionary"],
-      correct: 0,
-      explanation:
-        "Python has list, tuple, dictionary, and set as built-in data structures. 'array' is available via the array module.",
-    },
-  ],
-  java: [
-    {
-      question: "Which keyword is used to inherit a class in Java?",
-      options: ["extends", "implements", "inherits", "super"],
-      correct: 0,
-      explanation:
-        "The 'extends' keyword is used to create a subclass that inherits from another class.",
-    },
-    {
-      question: "What is the default value of a boolean variable in Java?",
-      options: ["false", "true", "null", "undefined"],
-      correct: 0,
-      explanation:
-        "In Java, primitive boolean variables default to false if not initialized.",
-    },
-  ],
-  react: [
-    {
-      question:
-        "What is the correct syntax to create a functional component in React?",
-      options: [
-        "const MyComponent = () => {}",
-        "function MyComponent() {}",
-        "class MyComponent extends React.Component {}",
-        "Both A and B",
-      ],
-      correct: 3,
-      explanation:
-        "Both arrow functions and regular functions can be used to create functional components.",
-    },
-    {
-      question:
-        "Which hook is used to perform side effects in functional components?",
-      options: ["useState", "useEffect", "useContext", "useReducer"],
-      correct: 1,
-      explanation:
-        "The useEffect hook lets you perform side effects in function components.",
-    },
-  ],
-  css: [
-    {
-      question:
-        "Which property is used to change the text color of an element?",
-      options: ["text-color", "font-color", "color", "text-style"],
-      correct: 2,
-      explanation: "The 'color' property is used to set the color of the text.",
-    },
-    {
-      question: "What does CSS stand for?",
-      options: [
-        "Computer Style Sheets",
-        "Creative Style Sheets",
-        "Cascading Style Sheets",
-        "Colorful Style Sheets",
-      ],
-      correct: 2,
-      explanation: "CSS stands for Cascading Style Sheets.",
-    },
-  ],
-  typescript: [
-    {
-      question: "What is TypeScript primarily used for?",
-      options: [
-        "Adding static typing to JavaScript",
-        "Replacing JavaScript entirely",
-        "Creating server-side applications",
-        "Styling web pages",
-      ],
-      correct: 0,
-      explanation: "TypeScript adds optional static typing to JavaScript.",
-    },
-    {
-      question: "Which symbol is used for type assertions in TypeScript?",
-      options: [":", "as", "!", "Both A and B"],
-      correct: 3,
-      explanation:
-        "TypeScript supports both angle bracket syntax (<Type>) and 'as' syntax for type assertions.",
-    },
-  ],
-  csharp: [
-    {
-      question: "What is the entry point of a C# program?",
-      options: [
-        "Main() method",
-        "Start() method",
-        "Initialize() method",
-        "Program() constructor",
-      ],
-      correct: 0,
-      explanation: "The Main method is the entry point of a C# application.",
-    },
-  ],
-  php: [
-    {
-      question: "Which symbol is used to prefix all PHP variables?",
-      options: ["!", "#", "$", "&"],
-      correct: 2,
-      explanation: "PHP variables must be prefixed with the dollar sign ($).",
-    },
-  ],
-};
+import { useState, useEffect } from "react";
 
 export function QuizInterface({ language, onBackToLanguages, onQuizComplete }) {
+  const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [score, setScore] = useState(0);
+  const [submitting, setSubmitting] = useState(false);
+  const [apiResult, setApiResult] = useState(null);
 
-  const questions = quizData[language];
-  const currentQuestion = questions[currentQuestionIndex];
-  const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+  useEffect(() => {
+    fetchQuizzesByCategory();
+  }, [language]);
+
+  const fetchQuizzesByCategory = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(`http://localhost:8082/api/quizzes/category/${language}`);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch quizzes for ${language}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data.length === 0) {
+        throw new Error(`No questions found for ${language}`);
+      }
+      
+      setQuestions(data);
+      setError(null);
+    } catch (err) {
+      console.error('Error fetching quizzes:', err);
+      setError(err.message || 'Failed to load quiz questions. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const selectAnswer = (optionIndex) => {
-    if (selectedAnswer !== null) return; // Prevent multiple selections
-
     setSelectedAnswer(optionIndex);
-    const isCorrect = optionIndex === currentQuestion.correct;
+    setShowFeedback(false);
+    setApiResult(null);
+  };
 
-    const newAnswer = {
-      selected: optionIndex,
-      correct: isCorrect,
+  const submitAnswer = async () => {
+    if (selectedAnswer === null) return;
+
+    const currentQuestion = questions[currentQuestionIndex];
+    
+    const submission = {
+      quizId: currentQuestion.id,
+      selectedOption: selectedAnswer
     };
 
-    const newUserAnswers = [...userAnswers];
-    newUserAnswers[currentQuestionIndex] = newAnswer;
-    setUserAnswers(newUserAnswers);
+    try {
+      setSubmitting(true);
+      const response = await fetch('http://localhost:8082/api/quizzes/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submission)
+      });
 
-    if (isCorrect) {
-      setScore((prev) => prev + 1);
+      if (!response.ok) {
+        throw new Error('Failed to submit answer');
+      }
+
+      const result = await response.json();
+      setApiResult(result);
+
+      
+      const newAnswer = {
+        selected: selectedAnswer,
+        correct: result.correct,
+        explanation: result.explanation,
+        correctOption: result.correctOption
+      };
+
+      const newUserAnswers = [...userAnswers];
+      newUserAnswers[currentQuestionIndex] = newAnswer;
+      setUserAnswers(newUserAnswers);
+
+      if (result.correct) {
+        setScore((prev) => prev + 1);
+      }
+
+      setShowFeedback(true);
+    } catch (err) {
+      console.error('Error submitting answer:', err);
+      setError(err.message || 'Failed to submit answer. Please try again.');
+    } finally {
+      setSubmitting(false);
     }
-
-    setShowFeedback(true);
   };
 
   const nextQuestion = () => {
@@ -200,6 +106,7 @@ export function QuizInterface({ language, onBackToLanguages, onQuizComplete }) {
       setCurrentQuestionIndex((prev) => prev + 1);
       setSelectedAnswer(null);
       setShowFeedback(false);
+      setApiResult(null);
     }
   };
 
@@ -209,28 +116,75 @@ export function QuizInterface({ language, onBackToLanguages, onQuizComplete }) {
       const prevAnswer = userAnswers[currentQuestionIndex - 1];
       setSelectedAnswer(prevAnswer?.selected ?? null);
       setShowFeedback(prevAnswer !== undefined);
+      setApiResult(prevAnswer ? {
+        correct: prevAnswer.correct,
+        correctOption: prevAnswer.correctOption,
+        explanation: prevAnswer.explanation,
+        quizId: questions[currentQuestionIndex - 1]?.id
+      } : null);
     }
   };
 
   const getOptionClass = (index) => {
-    let baseClass =
-      "w-full text-left p-4 rounded-xl border-2 transition-all duration-200";
+    let baseClass = "w-full text-left p-4 rounded-xl border-2 transition-all duration-200";
 
-    if (selectedAnswer === null) {
-      return `${baseClass} border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-500 bg-gray-50 dark:bg-slate-700 hover:bg-blue-50 dark:hover:bg-slate-600`;
+    if (!showFeedback) {
+      // Before submission
+      if (selectedAnswer === index) {
+        return `${baseClass} border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900`;
+      } else {
+        return `${baseClass} border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-500 bg-gray-50 dark:bg-slate-700 hover:bg-blue-50 dark:hover:bg-slate-600`;
+      }
     }
 
-    if (index === currentQuestion.correct) {
-      return `${baseClass} border-green-500 bg-green-50 dark:border-green-400 dark:bg-green-900 animate-pulse-success`;
-    } else if (
-      index === selectedAnswer &&
-      selectedAnswer !== currentQuestion.correct
-    ) {
-      return `${baseClass} border-red-500 bg-red-50 dark:border-red-400 dark:bg-red-900 animate-pulse-error`;
+    // After submission (feedback shown)
+    if (index === apiResult?.correctOption) {
+      return `${baseClass} border-green-500 bg-green-50 dark:border-green-400 dark:bg-green-900`;
+    } else if (index === selectedAnswer && !apiResult?.correct) {
+      return `${baseClass} border-red-500 bg-red-50 dark:border-red-400 dark:bg-red-900`;
     } else {
       return `${baseClass} border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-slate-700`;
     }
   };
+
+  if (loading) {
+    return (
+      <div className="animate-fade-in text-center py-12">
+        <div className="inline-block w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        <p className="mt-4 text-gray-600 dark:text-gray-300">Loading quiz questions...</p>
+      </div>
+    );
+  }
+
+  if (error && !questions.length) {
+    return (
+      <div className="animate-fade-in text-center py-12">
+        <div className="bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 rounded-xl p-6 max-w-md mx-auto">
+          <i className="fas fa-exclamation-circle text-red-500 text-4xl mb-4"></i>
+          <p className="text-red-700 dark:text-red-200 mb-4">{error}</p>
+          <div className="flex gap-3 justify-center">
+            <button
+              onClick={fetchQuizzesByCategory}
+              className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+            >
+              <i className="fas fa-redo mr-2"></i>
+              Retry
+            </button>
+            <button
+              onClick={onBackToLanguages}
+              className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors"
+            >
+              <i className="fas fa-arrow-left mr-2"></i>
+              Back
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const currentQuestion = questions[currentQuestionIndex];
+  const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   return (
     <div className="animate-slide-up">
@@ -258,7 +212,7 @@ export function QuizInterface({ language, onBackToLanguages, onQuizComplete }) {
               Score
             </div>
             <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-              {score}/{currentQuestionIndex + (selectedAnswer !== null ? 1 : 0)}
+              {score}/{currentQuestionIndex + (showFeedback ? 1 : 0)}
             </div>
           </div>
         </div>
@@ -283,7 +237,7 @@ export function QuizInterface({ language, onBackToLanguages, onQuizComplete }) {
             <button
               key={index}
               onClick={() => selectAnswer(index)}
-              disabled={selectedAnswer !== null}
+              disabled={showFeedback}
               className={getOptionClass(index)}
             >
               <span className="font-medium text-gray-700 dark:text-gray-200">
@@ -295,42 +249,82 @@ export function QuizInterface({ language, onBackToLanguages, onQuizComplete }) {
             </button>
           ))}
         </div>
+
+        {/* Submit Button */}
+        <div className="mt-8">
+          <button
+            onClick={submitAnswer}
+            disabled={selectedAnswer === null || submitting || showFeedback}
+            className={`w-full py-3 rounded-xl font-semibold transition-all duration-200 ${
+              selectedAnswer === null || submitting || showFeedback
+                ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed text-gray-700 dark:text-gray-300'
+                : 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white transform hover:scale-[1.02] active:scale-[0.98]'
+            }`}
+          >
+            {submitting ? (
+              <>
+                <i className="fas fa-spinner fa-spin mr-2"></i>
+                Checking Answer...
+              </>
+            ) : (
+              <>
+                <i className="fas fa-paper-plane mr-2"></i>
+                Submit Answer
+              </>
+            )}
+          </button>
+        </div>
       </div>
 
-      {/* Answer Feedback */}
-      {showFeedback && (
-        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 mb-6 shadow-lg border border-gray-200 dark:border-gray-700">
+      {/* Answer Feedback from API */}
+      {showFeedback && apiResult && (
+        <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 mb-6 shadow-lg border border-gray-200 dark:border-gray-700 animate-fade-in">
           <div className="flex items-start space-x-4">
             <div
-              className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                selectedAnswer === currentQuestion.correct
-                  ? "bg-green-500"
-                  : "bg-red-500"
+              className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center ${
+                apiResult.correct
+                  ? "bg-gradient-to-r from-green-500 to-emerald-600"
+                  : "bg-gradient-to-r from-red-500 to-rose-600"
               }`}
             >
               <i
                 className={`fas ${
-                  selectedAnswer === currentQuestion.correct
-                    ? "fa-check"
-                    : "fa-times"
-                } text-white`}
+                  apiResult.correct ? "fa-check" : "fa-times"
+                } text-white text-xl`}
               ></i>
             </div>
             <div className="flex-1">
-              <h4
-                className={`text-lg font-semibold mb-2 ${
-                  selectedAnswer === currentQuestion.correct
-                    ? "text-green-600 dark:text-green-400"
-                    : "text-red-600 dark:text-red-400"
-                }`}
-              >
-                {selectedAnswer === currentQuestion.correct
-                  ? "Correct!"
-                  : "Incorrect"}
-              </h4>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                {currentQuestion.explanation}
-              </p>
+              <div className="flex justify-between items-start mb-2">
+                <h4
+                  className={`text-xl font-bold ${
+                    apiResult.correct
+                      ? "text-green-600 dark:text-green-400"
+                      : "text-red-600 dark:text-red-400"
+                  }`}
+                >
+                  {apiResult.correct ? "Correct Answer! 🎉" : "Incorrect Answer"}
+                </h4>
+                <span className="text-sm text-gray-500 dark:text-gray-400">
+                  Quiz ID: {apiResult.quizId}
+                </span>
+              </div>
+              
+              {!apiResult.correct && (
+                <div className="mb-4 p-3 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700 rounded-lg">
+                  <p className="text-yellow-700 dark:text-yellow-300 text-sm">
+                    <i className="fas fa-lightbulb mr-2"></i>
+                    The correct answer was: <span className="font-semibold">
+                      {String.fromCharCode(65 + apiResult.correctOption)})
+                    </span>
+                  </p>
+                </div>
+              )}
+              
+              <div className="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <span className="font-semibold text-gray-800 dark:text-gray-200">Explanation:</span> {apiResult.explanation}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -349,7 +343,7 @@ export function QuizInterface({ language, onBackToLanguages, onQuizComplete }) {
 
         <button
           onClick={nextQuestion}
-          disabled={selectedAnswer === null}
+          disabled={!showFeedback}
           className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
         >
           {currentQuestionIndex === questions.length - 1 ? (
@@ -359,12 +353,22 @@ export function QuizInterface({ language, onBackToLanguages, onQuizComplete }) {
             </>
           ) : (
             <>
-              Next
+              Next Question
               <i className="fas fa-chevron-right ml-2"></i>
             </>
           )}
         </button>
       </div>
+
+      {/* Error Display */}
+      {error && questions.length > 0 && (
+        <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-700 rounded-xl animate-fade-in">
+          <div className="flex items-center">
+            <i className="fas fa-exclamation-triangle text-red-500 mr-3"></i>
+            <p className="text-red-700 dark:text-red-300">{error}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

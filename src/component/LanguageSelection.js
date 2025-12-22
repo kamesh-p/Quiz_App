@@ -1,46 +1,60 @@
+import { useState, useEffect } from 'react';
+
 export function LanguageSelection({ onLanguageSelect }) {
-  const languages = [
-    {
-      id: "javascript",
-      name: "JavaScript",
-      icon: "fab fa-js-square",
-      color: "from-yellow-400 to-orange-500",
-      iconColor: "text-yellow-500",
-      description: "Test your JS fundamentals and ES6+ features",
-    },
-    {
-      id: "python",
-      name: "Python",
-      icon: "fab fa-python",
-      color: "from-blue-400 to-green-500",
-      iconColor: "text-blue-500",
-      description: "Explore Python syntax and core concepts",
-    },
-    {
-      id: "java",
-      name: "Java",
-      icon: "fab fa-java",
-      color: "from-red-400 to-orange-500",
-      iconColor: "text-red-600",
-      description: "Challenge your Java and OOP knowledge",
-    },
-    {
-      id: "react",
-      name: "React",
-      icon: "fab fa-react",
-      color: "from-cyan-400 to-blue-500",
-      iconColor: "text-cyan-500",
-      description: "Test your React hooks and component skills",
-    },
-    {
-      id: "css",
-      name: "CSS",
-      icon: "fab fa-css3-alt",
-      color: "from-purple-400 to-pink-500",
-      iconColor: "text-purple-500",
-      description: "Master CSS layouts and modern techniques",
-    },
-  ];
+  const [languages, setLanguages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchLanguages();
+  }, []);
+
+  const fetchLanguages = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch('http://localhost:8082/api/language');
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch languages');
+      }
+      
+      const data = await response.json();
+      setLanguages(data);
+      setError(null);
+    } catch (err) {
+      console.error('Error fetching languages:', err);
+      setError('Failed to load languages. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="animate-fade-in text-center py-12">
+        <div className="inline-block w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        <p className="mt-4 text-gray-600 dark:text-gray-300">Loading languages...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="animate-fade-in text-center py-12">
+        <div className="bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-700 rounded-xl p-6 max-w-md mx-auto">
+          <i className="fas fa-exclamation-circle text-red-500 text-4xl mb-4"></i>
+          <p className="text-red-700 dark:text-red-200 mb-4">{error}</p>
+          <button
+            onClick={fetchLanguages}
+            className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+          >
+            <i className="fas fa-redo mr-2"></i>
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="animate-fade-in">
@@ -49,8 +63,7 @@ export function LanguageSelection({ onLanguageSelect }) {
           Choose Your Programming Language
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          Test your knowledge with our comprehensive quiz. Each language has 10
-          challenging questions to help you assess your skills.
+          Test your knowledge with our comprehensive quiz. Each language has challenging questions to help you assess your skills.
         </p>
       </div>
 
@@ -83,7 +96,7 @@ export function LanguageSelection({ onLanguageSelect }) {
         <div className="inline-flex items-center space-x-2 text-gray-500 dark:text-gray-400">
           <i className="fas fa-info-circle"></i>
           <span className="text-sm">
-            Each quiz contains 10 questions with immediate feedback
+            Each quiz contains multiple questions with immediate feedback
           </span>
         </div>
       </div>
